@@ -26,7 +26,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
         title: Text(
           'Body Mass Index',
           style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-            color: Colors.white,
+            color: Colors.white70.withOpacity(0.8),
           ),
         ),
         centerTitle: true,
@@ -103,7 +103,6 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                         activeColor: Colors.blueGrey[900],
                         inactiveColor: Colors.blueGrey[600],
                         thumbColor: Colors.red,
-                        secondaryActiveColor: Colors.green,
                       ),
                     ],
                   ),
@@ -124,31 +123,41 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 ),
               ),
             ),
-            Container(
-              width: double.infinity,
-              color: Colors.red,
-              child: MaterialButton(
-                height: MediaQuery.of(context).size.height/12,
-                child: Text(
-                  'CALCULATE',
-                  style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                    color: Colors.white,
-                  ),                ),
-                onPressed: () {
-                  result= weight /pow(height/100, 2);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) {
-                          return BmiResultScreen(
-                            result: result,
-                            age: age,
-                            isMale: isMale,
-                          );
-                        }
-                    ),
-                  );
-                },
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 8.0,
+                right: 8.0,
+                bottom: 8.0,
+              ),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: MaterialButton(
+                  height: MediaQuery.of(context).size.height/12,
+                  child: Text(
+                    'CALCULATE',
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                      color: Colors.white70.withOpacity(0.8),
+                    ),                ),
+                  onPressed: () {
+                    result= weight /pow(height/100, 2);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) {
+                            return BmiResultScreen(
+                              result: result,
+                              age: age,
+                              isMale: isMale,
+                            );
+                          }
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ],

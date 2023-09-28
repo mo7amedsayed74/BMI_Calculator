@@ -19,6 +19,12 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
         ),
+        scaffoldBackgroundColor: Colors.white70,
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(
+            color: Colors.white70.withOpacity(0.8),
+          )
+        ),
       ),
       home: const BmiCalculator(),
     );

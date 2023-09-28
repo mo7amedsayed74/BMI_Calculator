@@ -37,7 +37,7 @@ class BmiResultScreen extends StatelessWidget {
         title: Text(
           'BMI Result',
           style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-            color: Colors.white,
+            color: Colors.white70.withOpacity(0.8),
           ),
         ),
         centerTitle: true,
