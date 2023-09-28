@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
             headlineLarge: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
+              fontSize: 30,
             ),
         ),
         scaffoldBackgroundColor: Colors.white70,

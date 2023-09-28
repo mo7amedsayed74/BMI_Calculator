@@ -3,7 +3,6 @@ import 'result_screen.dart';
 
 import 'dart:math';
 
-
 class BmiCalculator extends StatefulWidget {
   const BmiCalculator({super.key});
 
@@ -26,8 +25,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
         title: Text(
           'Body Mass Index',
           style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-            color: Colors.white70.withOpacity(0.8),
-          ),
+                color: Colors.white70.withOpacity(0.8),
+              ),
         ),
         centerTitle: true,
         elevation: 0,
@@ -40,11 +39,11 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    firstExpanded(context,'Female'),
+                    firstExpanded(context, 'Female'),
                     const SizedBox(
                       width: 8,
                     ),
-                    firstExpanded(context,'Male'),
+                    firstExpanded(context, 'Male'),
                   ],
                 ),
               ),
@@ -65,7 +64,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                     children: [
                       Text(
                         'HEIGHT',
-                        style:Theme.of(context).textTheme.headlineLarge,
+                        style: Theme.of(context).textTheme.headlineLarge,
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -114,11 +113,11 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    thirdExpanded(context,'weight'),
+                    thirdExpanded(context, 'weight'),
                     const SizedBox(
                       width: 8,
                     ),
-                    thirdExpanded(context,'age'),
+                    thirdExpanded(context, 'age'),
                   ],
                 ),
               ),
@@ -131,30 +130,30 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               ),
               child: Container(
                 width: double.infinity,
+                height: 60,
                 decoration: BoxDecoration(
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: MaterialButton(
-                  height: MediaQuery.of(context).size.height/12,
+                  //height: MediaQuery.of(context).size.height / 12,
                   child: Text(
                     'CALCULATE',
                     style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                      color: Colors.white70.withOpacity(0.8),
-                    ),                ),
+                          color: Colors.white70.withOpacity(0.8),
+                        ),
+                  ),
                   onPressed: () {
-                    result= weight /pow(height/100, 2);
+                    result = weight / pow(height / 100, 2);
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) {
-                            return BmiResultScreen(
-                              result: result,
-                              age: age,
-                              isMale: isMale,
-                            );
-                          }
-                      ),
+                      MaterialPageRoute(builder: (context) {
+                        return BmiResultScreen(
+                          result: result,
+                          age: age,
+                          isMale: isMale,
+                        );
+                      }),
                     );
                   },
                 ),
@@ -166,25 +165,30 @@ class _BmiCalculatorState extends State<BmiCalculator> {
     );
   }
 
-  Widget firstExpanded(BuildContext context , String gender){
+  Widget firstExpanded(BuildContext context, String gender) {
     return Expanded(
       child: GestureDetector(
         onTap: () {
           setState(() {
-            isMale = (gender=='Male') ? true : false;
+            isMale = (gender == 'Male') ? true : false;
           });
         },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: (isMale && gender=='Male') || (!isMale && gender=='Female') ? Colors.red : Colors.grey,
+            color:
+                (isMale && gender == 'Male') || (!isMale && gender == 'Female')
+                    ? Colors.red
+                    : Colors.grey,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image(
                 image: AssetImage(
-                  gender=='Male'?'assets/images/male.png':'assets/images/female.png',
+                  gender == 'Male'
+                      ? 'assets/images/male.png'
+                      : 'assets/images/female.png',
                 ),
                 height: 90,
                 width: 90,
@@ -193,8 +197,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 height: 8,
               ),
               Text(
-                (gender=='Male') ? 'Male' : 'FEMALE',
-                style:Theme.of(context).textTheme.headlineLarge,
+                (gender == 'Male') ? 'Male' : 'FEMALE',
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
             ],
           ),
@@ -203,7 +207,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
     );
   }
 
-  Widget thirdExpanded(BuildContext context , String title){
+  Widget thirdExpanded(BuildContext context, String title) {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
@@ -215,17 +219,14 @@ class _BmiCalculatorState extends State<BmiCalculator> {
           children: [
             Text(
               title, // print (title)
-              style:Theme.of(context).textTheme.headlineLarge,
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
             const SizedBox(
-              height: 10,
+              height: 8,
             ),
             Text(
               (title == 'weight') ? '$weight' : '$age',
-              style: const TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -233,17 +234,19 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 FloatingActionButton(
                   onPressed: () {
                     setState(() {
-                      if(title=='weight' && weight > 0) {
+                      if (title == 'weight' && weight > 0) {
                         weight--;
-                      }else if(title=='age' && age > 0) {
+                      } else if (title == 'age' && age > 0) {
                         age--;
                       }
                     });
                   },
-                  heroTag: (title=='weight') ? 'weight--' : 'age--',  // There are multiple heroes that share the same tag within a subtree.
+                  heroTag: (title == 'weight') ? 'weight--' : 'age--',
+                  // There are multiple heroes that share the same tag within a subtree.
                   // المفروض يكون في زرار واحد فلوتينج ف بدي لكل واحد زي اسم كدا عشان افرقهم عن بعض
 
-                  mini: true, // size (mini , normal)
+                  mini: true,
+                  // size (mini , normal)
                   backgroundColor: Colors.red,
                   child: const Icon(
                     Icons.remove,
@@ -256,17 +259,19 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 FloatingActionButton(
                   onPressed: () {
                     setState(() {
-                      if(title=='weight') {
+                      if (title == 'weight') {
                         weight++;
-                      }else {
+                      } else {
                         age++;
                       }
                     });
                   },
-                  heroTag:(title=='weight') ? 'weight++' : 'age++',  // There are multiple heroes that share the same tag within a subtree.
+                  heroTag: (title == 'weight') ? 'weight++' : 'age++',
+                  // There are multiple heroes that share the same tag within a subtree.
                   // المفروض يكون في زرار واحد فلوتينج ف بدي لكل واحد زي اسم كدا عشان افرقهم عن بعض
 
-                  mini: true, // size (mini , normal)
+                  mini: true,
+                  // size (mini , normal)
                   backgroundColor: Colors.red,
                   child: const Icon(
                     Icons.add,
