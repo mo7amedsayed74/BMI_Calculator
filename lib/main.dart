@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
 import 'screens/bmi_screen.dart';
 
 void main() {
@@ -22,8 +23,9 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white70,
         appBarTheme: AppBarTheme(
+          backgroundColor: defaultColor,
           iconTheme: IconThemeData(
-            color: Colors.white70.withOpacity(0.8),
+            color: titlesColor,
           )
         ),
       ),

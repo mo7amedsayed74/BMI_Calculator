@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class BmiResultScreen extends StatelessWidget {
   final double result;
   final bool isMale;
@@ -33,11 +35,10 @@ class BmiResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
         title: Text(
           'BMI Result',
           style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-            color: Colors.white70.withOpacity(0.8),
+            color: titlesColor,
           ),
         ),
         centerTitle: true,

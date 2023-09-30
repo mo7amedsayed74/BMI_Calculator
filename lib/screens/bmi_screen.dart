@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants.dart';
 import 'result_screen.dart';
 
 import 'dart:math';
@@ -21,11 +22,10 @@ class _BmiCalculatorState extends State<BmiCalculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
         title: Text(
           'Body Mass Index',
           style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                color: Colors.white70.withOpacity(0.8),
+                color: titlesColor,
               ),
         ),
         centerTitle: true,
@@ -99,9 +99,9 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                             height = val;
                           });
                         },
-                        activeColor: Colors.blueGrey[900],
+                        activeColor: Colors.blueGrey[800],
                         inactiveColor: Colors.blueGrey[600],
-                        thumbColor: Colors.red,
+                        thumbColor: Colors.black,
                       ),
                     ],
                   ),
@@ -132,7 +132,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 width: double.infinity,
                 height: 60,
                 decoration: BoxDecoration(
-                  color: Colors.red,
+                  color: Colors.blueGrey[600],
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: MaterialButton(
@@ -140,7 +140,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                   child: Text(
                     'CALCULATE',
                     style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                          color: Colors.white70.withOpacity(0.8),
+                          color: titlesColor,
                         ),
                   ),
                   onPressed: () {
@@ -178,7 +178,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
             borderRadius: BorderRadius.circular(20),
             color:
                 (isMale && gender == 'Male') || (!isMale && gender == 'Female')
-                    ? Colors.red
+                    ? defaultColor
                     : Colors.grey,
           ),
           child: Column(
@@ -247,7 +247,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
 
                   mini: true,
                   // size (mini , normal)
-                  backgroundColor: Colors.red,
+                  backgroundColor: defaultColor,
                   child: const Icon(
                     Icons.remove,
                     color: Colors.black,
@@ -272,7 +272,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
 
                   mini: true,
                   // size (mini , normal)
-                  backgroundColor: Colors.red,
+                  backgroundColor: defaultColor,
                   child: const Icon(
                     Icons.add,
                     color: Colors.black,
